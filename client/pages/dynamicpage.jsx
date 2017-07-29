@@ -3,16 +3,27 @@ import PropTypes from 'prop-types';
 
 class Dynamic extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {
+      urlParam: ''
+    };
+  }
+
   componentDidMount() {
     const anId = this.props.match.params.anId;
     console.log('anId: ' + anId);
+
+    this.setState({
+      urlParam: anId
+    });
   }
 
   render() {
     return (
       <section>
         <h2>Dynamic page</h2>
-        <p>{anId}</p>
+        <p>{this.state.urlParam}</p>
       </section>
     )
   }
